@@ -105,3 +105,6 @@ dist
 
 #config keys
 config 
+
+#yarn lock
+yarn.lock
