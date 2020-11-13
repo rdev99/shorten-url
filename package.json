@@ -1,0 +1,13 @@
+{
+  "name": "shorten-url",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:rdev99/shorten-url.git",
+  "author": "rdev <deveshranjan920@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "express": "^4.17.1",
+    "mongoose": "^5.10.14"
+  }
+}
