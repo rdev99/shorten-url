@@ -2,8 +2,10 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const path = require('path');
+const ShortUrl = require('./models/sortURL')
 
 const app = express();
+
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
@@ -21,7 +23,6 @@ mongoose.connect(db,{ useNewUrlParser: true,useUnifiedTopology: true })
 app.get("/",(req,res) => {
     res.sendFile(path.join(__dirname,'./index.html'));
 })
-
 
 
 
