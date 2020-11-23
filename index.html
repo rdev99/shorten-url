@@ -12,8 +12,8 @@
     </nav>
 
     <div style="margin-top: 170px;margin-left: 500px;margin-right: 600px;">
-        <form action="" class="form-inline">
-            <input type="text" placeholder="URL" class="form-control col">
+        <form action="http://localhost:5000/shorten" method="POST" class="form-inline">
+            <input type="text" name="short" placeholder="URL" class="form-control col">
             <button type="submit" class="btn btn-primary ml-2">Shorten</button>
         </form>
     </div>
@@ -28,14 +28,32 @@
                     <th scope="col"></th>
                 </tr>
             </thead>
-            <tbody>
-                <tr>
-                    <td>nabsdh</td>
-                    <td>nabsdh</td>
-                    <td>0</td>
-                </tr>
+            <tbody id="allShorts">
+                
             </tbody>
         </table>
     </div>
+    <script>
+        const xhr = new XMLHttpRequest();
+        let url = `http://localhost:5000/short`;
+        xhr.open('GET', url);
+        xhr.responseType = 'json';
+        xhr.onload = () => {
+            let data=xhr.response;
+            let html1 = '';
+            // console.log(data);
+            for(let i=0;i<data.length;i++)
+            {
+                html1=html1+`<tr>
+                    <td>${data[i].fullUrl}</td>
+                    <td><a href="http://localhost:5000/${data[i].shortUrl}">${data[i].shortUrl}</a></td>
+                    <td>${data[i].clickedNo}</td>
+                </tr>`
+            }
+            document.getElementById('allShorts').innerHTML+=html1;
+        }
+        xhr.send();
+
+    </script>
 </body>
 </html>
